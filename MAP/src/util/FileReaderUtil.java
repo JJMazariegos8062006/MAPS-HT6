@@ -11,7 +11,7 @@ public class FileReaderUtil {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split("\\|");
-                map.put(parts[1], parts[0]);
+                map.put(parts[1].trim(), parts[0].trim());
             }
         } catch (IOException e) {
             e.printStackTrace();
