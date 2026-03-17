@@ -20,7 +20,7 @@ public class Main {
         Map<String, String> inventarioMap = MapFactory.getMap(opcion);
         Map<String, Integer> carritoMap = MapFactory.getMap(opcion);
 
-        FileReaderUtil.cargarInventario("Inventario.txt", inventarioMap);
+        FileReaderUtil.cargarInventario("MAP/src/ListadoProducto.txt", inventarioMap);
 
         Inventario inventario = new Inventario(inventarioMap);
         ColeccionUsuario carrito = new ColeccionUsuario(carritoMap);
