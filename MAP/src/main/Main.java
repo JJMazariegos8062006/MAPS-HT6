@@ -9,10 +9,37 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+
+        System.out.println("=== PRUEBA DE RENDIMIENTO ===");
+
+        for (int i = 1; i <= 3; i++) {
+
+            long start = System.nanoTime();
+
+            Map<String, String> inventarioMap = MapFactory.getMap(i);
+            FileReaderUtil.cargarInventario("MAP/src/ListadoProducto.txt", inventarioMap);
+
+            Inventario inventario = new Inventario(inventarioMap);
+
+            inventario.mostrar();
+
+            long end = System.nanoTime();
+
+            String tipo = switch (i) {
+                case 1 -> "HashMap";
+                case 2 -> "TreeMap";
+                case 3 -> "LinkedHashMap";
+                default -> "Desconocido";
+            };
+
+            System.out.println(tipo + " tiempo: " + (end - start) + " ns");
+        }
+
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Seleccione implementación de Map:");
+        System.out.println("\nSeleccione implementación de Map:");
         System.out.println("1. HashMap\n2. TreeMap\n3. LinkedHashMap");
         int opcion = sc.nextInt();
         sc.nextLine();
